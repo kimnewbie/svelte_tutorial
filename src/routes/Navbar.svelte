@@ -1,6 +1,26 @@
 <script>
   import { page } from "$app/stores";
   import { onMount } from "svelte";
+
+   const navs = [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "About",
+      href: "/about",
+    },
+    {
+      title: "Services",
+      href: "/services",
+    },
+    {
+      title: "Contact",
+      href: "/contact",
+    }, 
+  ];
+
   $: routeId = $page.route.id;
 //   $: console.log($page); // 페이지 변경될 때마다 라우팅
 </script>
@@ -9,18 +29,11 @@
         <!-- <a href='/'><h1>YJ</h1></a>  -->
          <h1>YJ</h1> 
         <ul>
+            {#each navs as {title, href}}
             <li>
-                <a href="/" class:active={routeId == '/'}>HOME</a>
-            </li>
-            <li>
-                <a href="/about" class:active={routeId == '/about'}>About</a>
-            </li>
-            <li>
-                <a href="/services" class:active={routeId == '/services'}>Services</a>
-            </li>
-            <li>
-                <a href="/contact" class:active={routeId == '/contact'}>Contact</a>
-            </li>
+                <a {href} class:active={routeId == href} {title}>{title}</a>
+            </li> 
+            {/each}
         </ul>
     </div>
 </nav> 
