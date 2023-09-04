@@ -1,7 +1,7 @@
 <script>
 import {
     page
-} from "$app/stores"; 
+} from "$app/stores";
 
 const navs = [{
         title: "Home",
@@ -26,26 +26,26 @@ const navs = [{
 ];
 
 $: url = $page.url.href;
-$: routeId = $page.route.id;
+$: routeId = $page.url.pathname;
 //   $: console.log($page); // 페이지 변경될 때마다 라우팅
 </script>
 
 <nav>
-    <div class="container"> 
+    <div class="container">
         <h1>YJ</h1>
         <ul>
-            {#each navs as {title, href}}
+            {#each navs as { title, href }}
             <li>
                 <a
-                    {href} class:active={href === "/"? routeId === "/" : url.includes(href)} {title}
+                    {href}
+                    class:active={href === "/" ? routeId === "/" : url.includes(href)}
+                    {title}>{title}</a
                     >
-                    {title}
-                </a>
-            </li>
-            {/each}
-        </ul>
-    </div>
-</nav>
+                    </li>
+                    {/each}
+                    </ul>
+                    </div>
+                    </nav>
 
 <style>
 nav {
