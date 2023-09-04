@@ -1,0 +1,33 @@
+:root {
+    --primary-color: #ff7b00;
+    --bg-color: #fff;
+    --color: #333;
+    --right-color: #ffffffbf;
+}
+
+[data-theme="dark"] {
+    --primary-color: #2b3f63;
+    --bg-color: #000;
+    --color: #ffffffbf;
+}
+
+body,
+textarea,
+input {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+        helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+        segoe ui emoji, segoe ui symbol, noto color emoji;
+    background-color: var(--bg-color);
+    color: var(--color);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+input,
+textarea {
+    background-color: transparent;
+}
