@@ -3,6 +3,13 @@ import {
     page
 } from "$app/stores";
 
+import {
+    onMount
+} from "svelte";
+
+import Moon from "./icons/moon.svelte";
+import Sun from "./icons/sun.svelte";
+
 const navs = [{
         title: "Home",
         href: "/",
@@ -25,6 +32,29 @@ const navs = [{
     },
 ];
 
+let currentTheme = "";
+
+onMount(() => {
+    // currentTheme = document.documentElement.dataset.theme;
+    // 사용자 설정이 다크모드인 경우를 찾는 방법
+    const userPrefersDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
+
+    const hasUserSetDarkModeManually =
+        document.documentElement.dataset.theme == "dark";
+
+    if (!hasUserSetDarkModeManually) {
+        setTheme(userPrefersDarkMode ? "dark" : "light");
+    }
+});
+
+const setTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    document.cookie = `siteTheme=${theme};max-age=31536000;path="/"`;
+    currentTheme = theme;
+};
+
 $: url = $page.url.href;
 $: routeId = $page.url.pathname;
 //   $: console.log($page); // 페이지 변경될 때마다 라우팅
@@ -43,6 +73,18 @@ $: routeId = $page.url.pathname;
                     >
                     </li>
                     {/each}
+                    <!-- Add Dark Mode -->
+                    <li class="relative">
+                        {#if currentTheme == "light"}
+                        <a class="moon" href={"#"} on:click={() => setTheme("dark")}>
+                            <Moon />
+                        </a>
+                        {:else}
+                        <a class="sun" href={"#"} on:click={() => setTheme("light")}>
+                            <Sun />
+                        </a>
+                        {/if}
+                    </li>
                     </ul>
                     </div>
                     </nav>
@@ -50,8 +92,8 @@ $: routeId = $page.url.pathname;
 <style>
 nav {
     padding: 0.5em;
-    background-color: #fff;
-    color: #000;
+    background-color: var(--bg-color);
+    color: var(--color);
 }
 
 .container {
@@ -83,7 +125,7 @@ a {
 }
 
 .logo {
-    color: #000;
+    color: var(--color);
 }
 
 .active {

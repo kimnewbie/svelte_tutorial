@@ -11,7 +11,7 @@
     margin-top: auto;
     padding: 3em 0;
     background-color: #343a40;
-    color: white;
+    color: #fff;
   }
   .container {
     text-align: center;

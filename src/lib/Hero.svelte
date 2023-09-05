@@ -1,7 +1,11 @@
 <div class="hero">
     <div class="container">
         <h2>YJ</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, magni deserunt harum sed itaque ab autem voluptas, quis molestias nisi aliquid laboriosam debitis odio sit quos. Saepe odio enim molestias.</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab
+            labore provident mollitia. Id assumenda voluptate earum corporis facere
+            quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.
+        </p>
     </div>
 </div>
 
@@ -19,7 +23,7 @@ h2 {
 }
 
 p {
-    color:var(--right-color);
+    color: var(--right-color);
     font-size: 1.1em;
     line-height: 1.6;
 }
